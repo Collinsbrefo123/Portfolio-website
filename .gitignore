@@ -1,8 +1,8 @@
 # Dependencies
 node_modules/
 
-# Claude Code local settings (machine-specific, not shared)
-.claude/settings.local.json
+# Claude Code project config (local dev tooling, not part of the site)
+.claude/
 
 # OS files
 .DS_Store

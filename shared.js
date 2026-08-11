@@ -46,7 +46,7 @@ function renderHeader(active) {
   `;
 }
 
-function renderFooter({ maxWidth = '960px', credit = true, borderTop = false } = {}) {
+function renderFooter({ maxWidth = '960px', borderTop = false } = {}) {
   const socialHtml = SOCIAL_LINKS.map(link => {
     const target = link.key === 'mail' ? '' : ' target="_blank" rel="noopener"';
     return `<a href="${link.href}"${target} class="hover:text-white">${ICONS[link.key]}</a>`;
@@ -54,7 +54,7 @@ function renderFooter({ maxWidth = '960px', credit = true, borderTop = false } =
 
   document.getElementById('site-footer').innerHTML = `
     <footer class="w-full mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-[#7a7a7a]${borderTop ? ' border-t border-white/10' : ''}" style="max-width:${maxWidth}">
-      <p>© 2026 / Collins Gyamera${credit ? ' / Build your portfolio with <span class="brand">Once UI</span>' : ''}</p>
+      <p>© 2026 / Collins Gyamera</p>
       <div class="flex items-center gap-4">${socialHtml}</div>
     </footer>
   `;
