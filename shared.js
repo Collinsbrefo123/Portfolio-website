@@ -28,17 +28,16 @@ const SOCIAL_LINKS = [
 function renderHeader(active) {
   const navHtml = NAV_ITEMS.map(item => {
     const isActive = item.key === active;
-    if (item.iconOnly) {
-      const cls = isActive ? 'bg-white/10 text-white' : 'text-[#c4c4c4] hover:text-white';
-      return `<a href="${item.href}" class="flex items-center justify-center w-7 h-7 rounded-full ${cls}">${ICONS[item.key]}</a>`;
-    }
     const cls = isActive ? 'bg-white/10 text-white' : 'text-[#c4c4c4] hover:text-white';
-    return `<a href="${item.href}" class="flex items-center gap-1.5 px-3 h-7 rounded-full ${cls} text-[13px]">${ICONS[item.key]}${item.label}</a>`;
+    if (item.iconOnly) {
+      return `<a href="${item.href}" aria-label="Home" class="flex items-center justify-center w-7 h-7 rounded-full ${cls}">${ICONS[item.key]}</a>`;
+    }
+    return `<a href="${item.href}" aria-label="${item.label}" class="flex items-center gap-1.5 px-2 sm:px-3 h-7 rounded-full ${cls} text-[13px]">${ICONS[item.key]}<span class="hidden sm:inline">${item.label}</span></a>`;
   }).join('');
 
   document.getElementById('site-header').innerHTML = `
-    <div class="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-5 text-xs text-[#8a8a8a] z-50">
-      <span>America/Toronto</span>
+    <div class="fixed top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-6 py-5 text-xs text-[#8a8a8a] z-50">
+      <span><span class="hidden sm:inline">America/Toronto</span></span>
       <nav class="flex items-center gap-0.5 bg-[#141414] border border-white/10 rounded-full px-1.5 py-1.5 shadow-lg">
         ${navHtml}
       </nav>
